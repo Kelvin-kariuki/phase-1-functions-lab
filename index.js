@@ -31,12 +31,25 @@ function distanceTravelledInFeet(distance){
         return 1584;
 
 }
- function calculatesFarePrice(start, destination){
-            if((start-destination)*0 <=400 ){
-                return 0;
-            }
-            if ((start-destination)*264-400 === 128 && ((start-destination)*264 >= 400) || ((start-destination)*264 <= 2000)){
-                return 2.56;
-            }
- }
-     
+//  function calculatesFarePrice(start, destination){
+//             // if((start-destination)*0 <=400 ){
+//             //     return 0;
+//             // }
+//             // if (((start-destination)*264-400) >= 400 && (((start-destination)*264-400 )<= 2000)){
+//             //     return 0.02*128;
+//             // }
+//     //   Use math abs
+//  }
+function calculatesFarePrice(start, destination) {
+    const range= Math.abs(destination -start) * 264;
+    if (range<=400){
+        return 0;
+    }
+    else if (range>400 && range<=2000){
+        return  (range - 400) *0.02    
+    } else if (range>2000 && range<=2500){
+            return 25
+    } else {
+        return 'cannot travel that far'
+    }
+}
